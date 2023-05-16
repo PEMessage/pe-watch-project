@@ -1,18 +1,15 @@
-<template>
+<template> <div class="g-wh-full">
+    
+    <div class="g-col-full">
+        <div class="video"> <PEVideoFLV ref="flvref"/>   </div>
 
-    <div class="warpperx">
-        <div class="video">  <PEVideoFLV ref="flvref" />  </div>
-        <div class="w-full "></div>
-        <div class="w-full h-300 border-sea-400  border-solid border-2">
-            <button class="btn" @click="HandleCon"> ToggleCon</button>
-            <button class="btn" @click="HandlePlay"> Play</button>
+        <div class="btn">
+            <button class=" " @click="HandleCon"> ToggleCon</button>
+            <button class="g-box inline-block" @click="HandlePlay"> Play</button>
         </div>
-        
-
     </div>
-
- 
-</template>
+   
+</div> </template>
 
 <script setup>
 import PEVideoFLV from './PEVideo/PEVideoFLV.vue';
@@ -24,32 +21,17 @@ const HandleCon = () => {
 
 }
 const HandlePlay = () => {
-    flvref.value.Pause()
+
 }
 
 </script>
 
 
 
-<style scoped lang="postcss">
+<style  lang="postcss" scoped>
 
-*{
-  @apply text-sea-200
+.video{
+    @apply   flex-auto 
 }
-.warpperx
-{
-    @apply h-full w-full flex flex-col 
-}
-.video
-{
-    @apply  flex-auto
-}
-
-.btn
-{
- @apply text-sea-200 w-auto 
- border-solid border-2 border-gray-700 rounded-md p-1 m-1 
-}
-
 
 </style>

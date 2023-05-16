@@ -1,37 +1,34 @@
 
 
 
-<template>
-  <div class="flex-auto fter">
-      <div class="flex flex-col">
-      <kbd class=" relative group" >
-        <div class="reddot"></div>
-        疫情检测系统
-      </kbd>
+<template> <div class="g-wh-full">
+  <div class="g-col-full">
 
-        <JsonClient ref="pereqCP"/>
-        
+    <div class="header">
+      <div class="reddot"></div>
+      <div class="text-white">疫情检测系统</div>
     </div>
-    
+        
+    <JsonClient ref="jsonCilentRef" class="flex-auto"/>
+
+    <div>
+      <button   @click='ConBtnHandle' class="g-box" >
+          Connect
+      </button>
+      <button   @click='DisconBtnHandle' class="g-box" >
+          Disconnect
+      </button>
+    </div>
+
   </div>
 
-
-  <div class="grid">
-    <button   @click='ConBtnHandle' class="btn" >
-        Connect
-    </button>
-    <button   @click='DisconBtnHandle' class="btn" >
-        Disconnect
-    </button>
-  </div>
-
-</template>
+</div> </template>
 
 <script setup>
   import JsonClient from './JsonClient.vue';
   import { ref } from 'vue'
 
-  const link = ref(false);
+  const jsonCilentRef = ref(false);
 
 
   const pereqCP = ref()
@@ -48,11 +45,14 @@
 
 <style scoped lang="postcss" >
 
-*{
-  @apply text-sea-200
+.header{
+  @apply mt-1 mb-2 
+         p-1 rounded-md bg-gray-800
+         flex flex-row items-center justify-center
 }
 .reddot{
-  @apply inline-block w-2 h-2 rounded m-1 bg-red-500
+  @apply  w-2 h-2 rounded m-1 bg-red-500
+          
 }
 
 .btn

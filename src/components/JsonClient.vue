@@ -1,12 +1,12 @@
 
-<template>
-  <div >
+<template> <div>
+  <div>
      {{ loading}}
   </div>
   <div v-for="(value,key) in data ">
      {{ key }}:{{ value  }}
   </div>
-</template>
+</div> </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
@@ -41,9 +41,8 @@ const log = () => {
 
 defineExpose({StartFetch, StopFetch, log})
 
-
-
-    
-
-  
 </script>
+
+<style scoped>
+
+</style>

@@ -3,12 +3,13 @@
 
 <template>
 
-<div class="warpper">
+<div class="warpperx">
   <main class="main">
-    <sider class="sider">  <Menu />       </sider>
-    <div class="content">  <MainContent/> </div>
+    <sider class="sider g-box">  <Menu />    </sider>
+    <div class="content g-box"> <MainContent />  </div>
+    
   </main>
-  <footer class="footer box">FZU 2023</footer>
+  <footer class="footer">FZU 2023</footer>
 </div>
 
 </template>
@@ -20,37 +21,31 @@ import MainContent from './components/MainContent.vue';
 
 </script>
 
-<style scoped lang="postcss" >
-.box
+
+<style  lang="postcss" scoped>
+.warpperx
 {
-  @apply border-solid border-2 border-gray-700 rounded-md p-1 m-1 ;
+  @apply bg-sea-900 h-screen flex flex-col 
 }
-.box:hover
-{
-  @apply border-gray-500
-} 
-.warpper
-{
-  @apply bg-sea-900  h-screen flex flex-col 
-}
+
 
 .main
 {
  @apply flex flex-row  /*As a flex container*/
-        flex-auto      /*As a flex element*/
+        flex-auto      /*As a flex element*/ 
 }
 .sider
 {
-  @apply box basis-1/4 flex-col
+  @apply  basis-1/4  
 }
 .content
 {
-  @apply box basis-3/4 flex-col
+  @apply  basis-3/4   
 }
 
 .footer
 {
-  @apply text-center text-sea-200 text-sm
+  @apply text-center text-sea-200 text-sm shrink-0
 }
 
 
