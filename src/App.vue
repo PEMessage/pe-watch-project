@@ -20,11 +20,15 @@ import MainContent from './components/MainContent.vue';
 
 </script>
 
-<style scope lang="postcss" >
+<style scoped lang="postcss" >
 .box
 {
   @apply border-solid border-2 border-gray-700 rounded-md p-1 m-1 ;
 }
+.box:hover
+{
+  @apply border-gray-500
+} 
 .warpper
 {
   @apply bg-sea-900  h-screen flex flex-col 
@@ -48,5 +52,6 @@ import MainContent from './components/MainContent.vue';
 {
   @apply text-center text-sea-200 text-sm
 }
+
 
 </style>

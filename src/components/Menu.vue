@@ -54,12 +54,10 @@
 .reddot{
   @apply inline-block w-2 h-2 rounded m-1 bg-red-500
 }
-.box
-{
-  @apply border-solid border-2 border-gray-700 rounded-md p-1 m-1 ;
-}
+
 .btn
 {
- @apply text-sea-200 w-auto box 
+ @apply text-sea-200 w-auto 
+ border-solid border-2 border-gray-700 rounded-md p-1 m-1 
 }
 </style>
