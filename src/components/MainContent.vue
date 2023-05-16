@@ -14,6 +14,7 @@
 <script setup>
 import PEVideoFLV from './PEVideo/PEVideoFLV.vue';
 import  {ref} from 'vue'
+
 const flvref = ref()
 
 const HandleCon = () => {
@@ -29,6 +30,8 @@ const HandlePlay = () => {
 
 
 <style  lang="postcss" scoped>
+
+
 
 .video{
     @apply   flex-auto 

@@ -28,15 +28,17 @@
   import JsonClient from './JsonClient.vue';
   import { ref } from 'vue'
 
+
+
   const jsonCilentRef = ref(false);
 
 
   const pereqCP = ref()
   const ConBtnHandle = () => {
-    pereqCP.value.StartFetch()
+    jsonCilentRef.value.StartFetch()
   }
   const DisconBtnHandle = () => {
-    pereqCP.value.StopFetch()
+    jsonCilentRef.value.StopFetch()
   }
 
 
@@ -46,7 +48,7 @@
 <style scoped lang="postcss" >
 
 .header{
-  @apply mt-1 mb-2 
+  @apply mt-1 mb-3 
          p-1 rounded-md bg-gray-800
          flex flex-row items-center justify-center
 }
