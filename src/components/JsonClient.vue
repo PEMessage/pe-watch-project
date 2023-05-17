@@ -11,7 +11,7 @@
 </main>
 
 <main class="main">
-    <div class="title">累计状态</div>
+    <div class="title">累计状态(30S)</div>
     <div v-for="(value,key) in sum_state_map" class="content">
       <div class="key">{{ value }}: </div> 
       <div class="value">{{ data[key] }} </div>
@@ -117,7 +117,7 @@ defineExpose({StartFetch, StopFetch, log})
 
 .content{
   @apply 
-         px-3 py-1 rounded-md bg-gray-800 m-3
+         px-3 py-1 rounded-md bg-gray-800 m-2
          flex flex-row items-center justify-between
 }
 
@@ -130,11 +130,11 @@ defineExpose({StartFetch, StopFetch, log})
 }
 
 .main{
-  @apply  border-b-8 border-gray-800 flex flex-col
+  @apply  border-b-8 border-gray-800 flex flex-col py-2
 }
 
 .title{
-  @apply mt-2 text-center
+  @apply mt-1 text-center
 }
 
 

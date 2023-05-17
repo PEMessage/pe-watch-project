@@ -13,3 +13,7 @@ export const streamstate = reactive({
     path:"live/STREAM_NAME.flv",
     port:"8080"
 })
+
+export const logstate = reactive({
+
+})
