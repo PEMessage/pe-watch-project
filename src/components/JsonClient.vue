@@ -1,11 +1,20 @@
 
 <template> <div>
-  <div class="title">
+
+
+  <main class="main">
+    <div class="cont">
      {{ loading ? "已连接" : "未连接" }}
-  </div>
-  <div v-for="(value,key) in data" class="title">
-     {{ key }}:{{ value  }}  </div> 
-  <div ></div>
+    </div>
+    <div v-for="(value,key) in data" class="cont">
+     {{ key }}:{{ value  }}  
+    </div> 
+    <div class="cont">
+      mask_rate: {{ (data.mask_sum / data.person_sum) }} 
+    </div>
+  </main>
+
+
 </div> </template>
 
 <script setup>
@@ -69,16 +78,19 @@ defineExpose({StartFetch, StopFetch, log})
 
 <style scoped>
 
-.title{
+.cont{
   @apply 
-         p-1 rounded-md bg-gray-800
+         p-1 rounded-md bg-gray-800 m-3
          flex flex-row items-center justify-center
+}
+.cont:hover{
+  @apply bg-gray-700
 }
 
-.ctn{
-  @apply 
-         p-1 rounded-md bg-gray-800
-         flex flex-row items-center justify-center
+.main{
+  @apply  border-b-8 border-gray-800
 }
+
+
 
 </style>

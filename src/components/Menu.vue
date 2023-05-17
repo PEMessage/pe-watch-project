@@ -33,7 +33,6 @@
   const jsonCilentRef = ref(false);
 
 
-  const pereqCP = ref()
   const ConBtnHandle = () => {
     jsonCilentRef.value.StartFetch()
   }
@@ -48,8 +47,7 @@
 <style scoped lang="postcss" >
 
 .header{
-  @apply mt-1 mb-3 
-         p-1 rounded-md bg-gray-800
+  @apply  rounded-t-sm bg-gray-800 py-3
          flex flex-row items-center justify-center
 }
 .reddot{

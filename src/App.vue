@@ -36,7 +36,7 @@ import MainContent from './components/MainContent.vue';
 }
 .sider
 {
-  @apply  basis-1/4  
+  @apply  basis-1/4  p-0
 }
 .content
 {

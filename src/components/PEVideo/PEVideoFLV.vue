@@ -45,7 +45,7 @@
   }
   const TogglePlay = ()=>{
     if(playerd.paused()){
-      playerd.currentTime( playerd.liveTracker.liveCurrentTime()-0.2 )
+      playerd.currentTime( playerd.liveTracker.liveCurrentTime()-1 )
       playerd.play()
     } else {
       playerd.pause()
