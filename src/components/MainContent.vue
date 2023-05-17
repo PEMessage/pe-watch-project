@@ -22,7 +22,7 @@ const HandleCon = () => {
 
 }
 const HandlePlay = () => {
-
+    flvref.value.TogglePlay()
 }
 
 </script>
