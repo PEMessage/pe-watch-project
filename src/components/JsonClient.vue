@@ -2,23 +2,49 @@
 <template> <div>
 
 
-  <main class="main">
-    <div class="cont">
+<main class="main">
+  <div class="title">当前状态</div>
+  <div v-for="(value,key) in current_state_map" class="content">
+    <div class="key">{{ value }}: </div> 
+    <div class="value">{{ data[key] }} </div>
+  </div> 
+</main>
+
+<main class="main">
+    <div class="title">累计状态</div>
+    <div v-for="(value,key) in sum_state_map" class="content">
+      <div class="key">{{ value }}: </div> 
+      <div class="value">{{ data[key] }} </div>
+    </div> 
+    <div class="content">
+      <div class="key">佩戴率:</div>
+      <div class="value">{{ (data.mask_sum / data.person_sum).toFixed(2) }} </div>
+    </div>
+</main>
+    
+ 
+
+    <div class="content">
      {{ loading ? "已连接" : "未连接" }}
     </div>
-    <div v-for="(value,key) in data" class="cont">
-     {{ key }}:{{ value  }}  
-    </div> 
-    <div class="cont">
-      mask_rate: {{ (data.mask_sum / data.person_sum) }} 
-    </div>
-  </main>
+
+
 
 
 </div> </template>
 
 <script setup>
 import { ref , reactive} from 'vue'
+import {jsoncilentstate} from '../store/store.js'
+
+
+const current_state_map = reactive({"detection_mask": "有口罩",
+                                    "detection_no_mask":"无口罩",
+                                    "cur_person_sum":"人数" } )
+const sum_state_map = reactive({"mask_sum":"有口罩",
+                                "no_mask_sum":"无口罩",
+                                "person_sum":"人数"})
+
 
 
 const data = reactive({"detection_mask": 0,
@@ -29,15 +55,21 @@ const data = reactive({"detection_mask": 0,
                        "person_sum":0
 })
 const loading = ref(false)
+let host = "http://localhost"
 let path = '/api'
 let port = 8003
 let fetchID = 0
 
+const ResetData = () => {
+  for(let key of Object.keys(data)){
+    data[key] = 0
+  }
+}
 
 const FetchHander = async () => {
     let response ;
     try{
-       response = await fetch('http://localhost:8003'+path)
+       response = await fetch(jsoncilentstate.host+':'+jsoncilentstate.port+jsoncilentstate.path)
     } catch(error) {
       loading.value = false
     }
@@ -57,39 +89,54 @@ const FetchHander = async () => {
     }
     loading.value = true
   }
-const StartFetch = () => {
-  if(fetchID){
-    clearInterval(fetchID)
+  
+  const StopFetch = () => {
+    if(fetchID){
+       clearInterval(fetchID)
+    }
+    setTimeout(ResetData,30)
   }
-  fetchID = setInterval(FetchHander,350)
-}
+  
+  const StartFetch = () => {
+    StopFetch()
+    fetchID = setInterval(FetchHander,jsoncilentstate.period)
+  }
 
-const StopFetch = () => {
-  clearInterval(fetchID)
-}
-
-const log = () => {
-  console.log("hi")
-}
+  const log = () => {
+    console.log("hi")
+  }
 
 defineExpose({StartFetch, StopFetch, log})
 
 </script>
 
 <style scoped>
-
-.cont{
-  @apply 
-         p-1 rounded-md bg-gray-800 m-3
-         flex flex-row items-center justify-center
+* {
+  @apply text-white
 }
-.cont:hover{
+
+.content{
+  @apply 
+         px-3 py-1 rounded-md bg-gray-800 m-3
+         flex flex-row items-center justify-between
+}
+
+.value {
+  @apply bg-slate-600 px-1 rounded-md text-sea-200
+}
+
+.content:hover{
   @apply bg-gray-700
 }
 
 .main{
-  @apply  border-b-8 border-gray-800
+  @apply  border-b-8 border-gray-800 flex flex-col
 }
+
+.title{
+  @apply mt-2 text-center
+}
+
 
 
 
