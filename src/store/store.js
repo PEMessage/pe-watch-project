@@ -1,9 +1,12 @@
+
+// 
 // Public Part
+//  
 import { reactive } from 'vue'
 
 export function SetProfile(source,target) {
   for( let key in source){
-    // console.log(key)
+
     target[key] = source[key]
   }
 }
@@ -18,8 +21,9 @@ export function SetUnEnumerable(obj) {
   }
 }
 
-
+// 
 // Json-Client Config Part
+// 
 const jsonDefaultProfile = {
   host:"http://localhost" ,
   path:"/api",

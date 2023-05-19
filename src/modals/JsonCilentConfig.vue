@@ -1,4 +1,6 @@
 <template>
+
+<!-- JSON Config ------------------------------------------------------------------------>
 <input type="checkbox" id="json-config-modal" class="modal-toggle" />
 <div class="modal-wraper"> 
 
@@ -14,20 +16,19 @@
     </main>
     <footer>
         <button class="g-box" @click="LoadConfig">加载</button>
-        <button class="g-box" @click="LoadDefault">加载默认</button>
+        <button class="g-box" @click="LoadDefault">默认</button>
         <button class="g-box" @click="SetConfig">应用</button>
-        <label for="json-config-modal" class="g-box text-center">关闭设置</label>
+        <label for="json-config-modal" class="g-box text-center">关闭</label>
     </footer>
 </div>
 <!-- End Main -->
-
 </div>
+
 </template>
 
 <script setup>
 import { jsoncilentstate,SetProfile } from '../store/store'
 import { reactive , ref} from 'vue';
-
 
 const jsoncilentstate_temp = reactive({
   host:"",
@@ -35,7 +36,6 @@ const jsoncilentstate_temp = reactive({
   port:"",
   period:0
 })
-
 
 function LoadConfig() {
     SetProfile(jsoncilentstate,jsoncilentstate_temp)
@@ -48,23 +48,24 @@ function SetConfig() {
 }
 
 LoadDefault()
-
-
 </script>
 
 <!-- Main  -->
 <style scoped>
 header {
-    @apply flex flex-row w-full justify-between items-center
+    @apply flex flex-row w-full justify-between  
 }
 
 main {
-    @apply   flex-col flex m-2
+    @apply   flex-col flex my-1
 }
 
 footer {
+    @apply flex flex-row  w-full overflow-auto items-center justify-center
+}
 
-    @apply flex flex-row justify-stretch w-full bg-black
+footer > * {
+    @apply  basis-1/4
 }
 
 main input{
@@ -108,7 +109,7 @@ main input{
 
 
 .modal-box {
-    @apply  rounded-md max-w-md w-1/2 bg-gray-800 p-3 shadow-lg 
+    @apply  rounded-lg max-w-md w-1/2 bg-gray-800 p-3 shadow-lg 
             flex flex-col 
 }
 

@@ -5,19 +5,19 @@
 
 <div class="warpperx">
   <main class="main">
-    <menu class="sider g-box">  <Menu />    </menu>
+    <div class="sider g-box">  <Menu />    </div>
     <div class="content g-box"> <MainContent />  </div>
   </main>
   <footer class="footer">FZU 2023</footer>
 </div>
-<Config />
+<JsonCilentConfig />
 
 </template>
 
 <script setup>
 import Menu from './components/Menu.vue'
 import MainContent from './components/MainContent.vue';
-import Config from './modals/Config.vue';
+import JsonCilentConfig from './modals/JsonCilentConfig.vue';
 
 
 </script>
@@ -36,11 +36,11 @@ import Config from './modals/Config.vue';
 }
 .sider
 {
-  @apply  basis-1/4  p-0
+  @apply  basis-1/4  p-0 
 }
 .content
 {
-  @apply  basis-3/4   
+  @apply  basis-3/4  flex-auto
 }
 
 .footer
