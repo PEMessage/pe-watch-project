@@ -5,7 +5,7 @@
 
 <div class="warpperx">
   <main class="main">
-    <sider class="sider g-box">  <Menu />    </sider>
+    <menu class="sider g-box">  <Menu />    </menu>
     <div class="content g-box"> <MainContent />  </div>
   </main>
   <footer class="footer">FZU 2023</footer>
@@ -21,7 +21,6 @@ import Config from './modals/Config.vue';
 
 
 </script>
-
 
 <style  lang="postcss" scoped>
 .warpperx

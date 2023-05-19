@@ -18,7 +18,7 @@
       <button   @click='DisconBtnHandle' class="g-box" >
           Disconnect
       </button>
-      <label for="config-modal" class="block g-box w-fit"> Config</label>
+      <label for="json-config-modal" class="block g-box w-fit"> Config</label>
     </div>
 
   </div>

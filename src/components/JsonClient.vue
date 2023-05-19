@@ -22,14 +22,9 @@
     </div>
 </main>
     
- 
-
-    <div class="content">
-     {{ loading ? "已连接" : "未连接" }}
-    </div>
-
-
-
+<div class="content">
+  {{ loading ? "已连接" : "未连接" }}
+</div>
 
 </div> </template>
 
@@ -37,15 +32,12 @@
 import { ref , reactive} from 'vue'
 import {jsoncilentstate} from '../store/store.js'
 
-
 const current_state_map = reactive({"detection_mask": "有口罩",
                                     "detection_no_mask":"无口罩",
                                     "cur_person_sum":"人数" } )
 const sum_state_map = reactive({"mask_sum":"有口罩",
                                 "no_mask_sum":"无口罩",
                                 "person_sum":"人数"})
-
-
 
 const data = reactive({"detection_mask": 0,
                        "detection_no_mask":0,
@@ -69,7 +61,7 @@ const ResetData = () => {
 const FetchHander = async () => {
     let response ;
     try{
-       response = await fetch(jsoncilentstate.host+':'+jsoncilentstate.port+jsoncilentstate.path)
+       response = await fetch(host+':'+port+path)
     } catch(error) {
       loading.value = false
     }
@@ -99,7 +91,7 @@ const FetchHander = async () => {
   
   const StartFetch = () => {
     StopFetch()
-    fetchID = setInterval(FetchHander,jsoncilentstate.period)
+    fetchID = setInterval(FetchHander,period)
   }
 
   const log = () => {
