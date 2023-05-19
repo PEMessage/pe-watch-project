@@ -119,6 +119,7 @@ defineExpose({StartFetch, StopFetch, log})
   @apply 
          px-3 py-1 rounded-md bg-gray-800 m-2
          flex flex-row items-center justify-between
+         transition-colors duration-75
 }
 
 .value {

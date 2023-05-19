@@ -18,6 +18,7 @@
       <button   @click='DisconBtnHandle' class="g-box" >
           Disconnect
       </button>
+      <label for="config-modal" class="block g-box w-fit"> Config</label>
     </div>
 
   </div>
@@ -27,6 +28,8 @@
 <script setup>
   import JsonClient from './JsonClient.vue';
   import { ref } from 'vue'
+
+
 
 
 

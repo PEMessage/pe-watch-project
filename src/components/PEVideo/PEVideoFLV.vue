@@ -36,7 +36,7 @@
   const handleMounted = ({ player }: { player: VideoJsPlayer }) => {
     import('./flv-video-tech').then(({ FlvJsTech }) => {
       videojs.registerTech('Flvjs', FlvJsTech)
-      player.src('http://localhost:8000/live/STREAM_NAME.flv')
+      player.src('http://localhos:8002/live/STREAM_NAME.flv')
       playerd = player
     })
   }

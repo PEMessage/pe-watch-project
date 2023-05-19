@@ -7,16 +7,17 @@
   <main class="main">
     <sider class="sider g-box">  <Menu />    </sider>
     <div class="content g-box"> <MainContent />  </div>
-    
   </main>
   <footer class="footer">FZU 2023</footer>
 </div>
+<Config />
 
 </template>
 
 <script setup>
 import Menu from './components/Menu.vue'
 import MainContent from './components/MainContent.vue';
+import Config from './modals/Config.vue';
 
 
 </script>
@@ -25,7 +26,7 @@ import MainContent from './components/MainContent.vue';
 <style  lang="postcss" scoped>
 .warpperx
 {
-  @apply bg-sea-900 h-screen flex flex-col 
+  @apply bg-sea-900 h-screen flex flex-col overflow-y-auto
 }
 
 
