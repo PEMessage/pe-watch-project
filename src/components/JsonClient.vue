@@ -102,7 +102,7 @@ defineExpose({StartFetch, StopFetch, log})
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 * {
   @apply text-white
 }

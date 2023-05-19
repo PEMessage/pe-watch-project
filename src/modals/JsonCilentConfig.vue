@@ -51,7 +51,7 @@ LoadDefault()
 </script>
 
 <!-- Main  -->
-<style scoped>
+<style lang="postcss" scoped>
 header {
     @apply flex flex-row w-full justify-between  
 }
@@ -77,7 +77,7 @@ main input{
 
 
 <!-- Modal Relate -->
-<style scoped>  
+<style lang="postcss" scoped>  
 
 * {
     @apply text-white
