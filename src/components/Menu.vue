@@ -4,63 +4,123 @@
 <template> <div class="g-wh-full">
   <div class="g-col-full">
 
-    <div class="header">
-      <div class="reddot"></div>
+    <header class="header">
+      <div class="dot bg-red-500"></div>
       <div class="text-white">疫情检测系统</div>
-    </div>
+    </header>
         
-    <JsonClient ref="jsonCilentRef" class="flex-auto"/>
 
-    <div>
-      <button   @click='ConBtnHandle' class="g-box" >
-          Connect
-      </button>
-      <button   @click='DisconBtnHandle' class="g-box" >
-          Disconnect
-      </button>
-      <label for="json-config-modal" class="block g-box w-fit"> Config</label>
-    </div>
+    <main> <JsonClient ref="jsonCilentRef" class="flex-auto"/> </main>
+    <div class="flex-auto"></div>
+
+    <footer class="footer">
+
+      <div>
+        <h1>数据</h1>
+        <button   @click='HandleConnect' class="g-btn" >
+          连接
+        </button>
+        <button   @click='HandleDisconnect' class="g-btn" >
+          断开
+        </button>
+        <label for="json-config-modal" class="g-btn "> 设置</label>
+      </div>
+
+      <div>
+        <h1>监控</h1>
+        <button   @click='HandlePlay' class="g-btn" >
+          连接
+        </button>
+        <button   @click='HandlePause' class="g-btn" >
+          断开
+        </button>
+        <label for="video-config-modal" class="g-btn "> 设置</label>
+      </div>
+
+
+    </footer>
+    
+
+
 
   </div>
-
 </div> </template>
 
 <script setup>
   import JsonClient from './JsonClient.vue';
   import { ref } from 'vue'
-
-
-
-
+  import { streamplaystate } from '../store/store.js';
 
   const jsonCilentRef = ref(false);
 
-
-  const ConBtnHandle = () => {
+  const HandleConnect = () => {
     jsonCilentRef.value.StartFetch()
   }
-  const DisconBtnHandle = () => {
+  const HandleDisconnect = () => {
     jsonCilentRef.value.StopFetch()
   }
+  const HandlePlay = () => {
+    streamplaystate.playing = true ;
+  }
+  const HandlePause = () => {
+    streamplaystate.playing = false ;
+  }
+
 
 
 </script>
 
-
+<!-- Footer -->
 <style scoped lang="postcss" >
 
+  .footer {
+    @apply flex flex-row    border-t-8 border-gray-800
+  }
+  .footer > div {
+    @apply basis-1/2 flex flex-col mx-1 py-1 
+            
+  }
+  h1 {
+    @apply text-center 
+  }
+
+  .footer > * > .g-btn {
+    @apply  block  font-semibold my-1
+  }
+
+  .footer > * > :nth-child(2){
+    @apply rounded-b-none 
+          bg-green-500 text-black text-opacity-70
+
+  }
+
+  .footer > * > :nth-child(3){
+    @apply rounded-none 
+          bg-red-500 text-black text-opacity-70
+  }
+  .footer > * > :nth-child(4){
+    @apply rounded-t-none
+  }
+
+  /* .footer > * > .g-btn :first-child {
+    @apply  rounded-t-md mb-1
+  }
+  .footer > * > :nth-child(2) {
+    @apply  rounded-none my-0
+  }
+  .footer > * > :last-child {
+    @apply  rounded-b-md mt-1
+  } */
+</style>
+
+<!-- Header -->
+<style scoped lang="postcss" >
 .header{
   @apply  rounded-t-sm bg-gray-800 py-3
          flex flex-row items-center justify-center
 }
-.reddot{
-  @apply  w-2 h-2 rounded m-1 bg-red-500
+.dot{
+  @apply  w-2 h-2 rounded m-1 
           
-}
-
-.btn
-{
- @apply text-sea-200 w-auto 
- border-solid border-2 border-gray-700 rounded-md p-1 m-1 
 }
 </style>

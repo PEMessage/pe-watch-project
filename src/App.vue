@@ -10,14 +10,16 @@
   </main>
   <footer class="footer">FZU 2023</footer>
 </div>
-<JsonCilentConfig />
+<JsonCilentModal />
+<StreamModal />
 
 </template>
 
 <script setup>
 import Menu from './components/Menu.vue'
 import MainContent from './components/MainContent.vue';
-import JsonCilentConfig from './modals/JsonCilentConfig.vue';
+import JsonCilentModal from './modals/JsonCilentModal.vue';
+import StreamModal from './modals/StreamModal.vue';
 
 
 </script>
@@ -36,7 +38,7 @@ import JsonCilentConfig from './modals/JsonCilentConfig.vue';
 }
 .sider
 {
-  @apply  basis-1/4  p-0 
+  @apply  basis-1/4  p-0 overflow-y-auto max-h-screen
 }
 .content
 {

@@ -3,7 +3,6 @@
     class="video-player vjs-big-play-centered "
     style="width:100%;height: 100%;"
     
-    
     crossorigin="anonymous"
     :techOrder="['html5', 'flvjs']"
     @mounted="handleMounted"
@@ -11,7 +10,7 @@
     :isLive="true"
     :muted="true"
     :liveTracker="liveTracker"
-   
+    :src="streamstate.host +':'+ streamstate.port + streamstate.path"
 
     :controls="controls"
   />
@@ -22,6 +21,7 @@
   import { VideoPlayer } from '@videojs-player/vue'
   import 'video.js/dist/video-js.css'
   import {ref,reactive} from 'vue'
+  import { streamstate } from '../../store/store.js'
 
   const playing = ref(true)
   const controls = ref(false)
@@ -36,7 +36,7 @@
   const handleMounted = ({ player }: { player: VideoJsPlayer }) => {
     import('./flv-video-tech').then(({ FlvJsTech }) => {
       videojs.registerTech('Flvjs', FlvJsTech)
-      player.src('http://localhos:8002/live/STREAM_NAME.flv')
+      player.src(streamstate.host +':'+ streamstate.port + streamstate.path)
       playerd = player
     })
   }
@@ -45,14 +45,24 @@
   }
   const TogglePlay = ()=>{
     if(playerd.paused()){
-      playerd.currentTime( playerd.liveTracker.liveCurrentTime()-1 )
+      playerd.currentTime( playerd.liveTracker.liveCurrentTime()- streamstate.delay)
       playerd.play()
     } else {
       playerd.pause()
-    }
-    
+    } 
   }
-  defineExpose({ToggleControl,TogglePlay})
+
+  const Play = ()=>{
+      playerd.currentTime( playerd.liveTracker.liveCurrentTime()- streamstate.delay)
+      playerd.play()
+  }
+
+  const Pause = ()=>{
+      playerd.pause()
+  }
+
+  
+  defineExpose({ToggleControl,TogglePlay,Play,Pause})
 
 </script>
 

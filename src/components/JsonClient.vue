@@ -22,9 +22,9 @@
     </div>
 </main>
     
-<div class="content">
+<!-- <div class="content">
   {{ loading ? "已连接" : "未连接" }}
-</div>
+</div> -->
 
 </div> </template>
 
@@ -50,6 +50,9 @@ const loading = ref(false)
 let host = "http://localhost"
 let path = '/api'
 let port = 8003
+let period = 250
+
+
 let fetchID = 0
 
 const ResetData = () => {
@@ -61,7 +64,7 @@ const ResetData = () => {
 const FetchHander = async () => {
     let response ;
     try{
-       response = await fetch(host+':'+port+path)
+       response = await fetch(jsoncilentstate.host+':'+jsoncilentstate.port+jsoncilentstate.path)
     } catch(error) {
       loading.value = false
     }
@@ -91,7 +94,7 @@ const FetchHander = async () => {
   
   const StartFetch = () => {
     StopFetch()
-    fetchID = setInterval(FetchHander,period)
+    fetchID = setInterval(FetchHander,jsoncilentstate.period)
   }
 
   const log = () => {

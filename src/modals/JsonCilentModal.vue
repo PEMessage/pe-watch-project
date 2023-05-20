@@ -15,10 +15,10 @@
         <input v-model="jsoncilentstate_temp[key]" placeholder="edit me" />
     </main>
     <footer>
-        <button class="g-box" @click="LoadConfig">加载</button>
-        <button class="g-box" @click="LoadDefault">默认</button>
-        <button class="g-box" @click="SetConfig">应用</button>
-        <label for="json-config-modal" class="g-box text-center">关闭</label>
+        <button class="g-btn" @click="LoadConfig">加载</button>
+        <button class="g-btn" @click="LoadDefault">默认</button>
+        <button class="g-btn" @click="SetConfig">应用</button>
+        <label for="json-config-modal" class="g-btn">关闭</label>
     </footer>
 </div>
 <!-- End Main -->

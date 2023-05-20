@@ -21,6 +21,10 @@ export function SetUnEnumerable(obj) {
   }
 }
 
+
+
+
+//////////////////////////////////////////////////////////
 // 
 // Json-Client Config Part
 // 
@@ -37,8 +41,9 @@ const jsonHostProfile = {
   port:"80",
   period:250
 }
-
+//      
 // Json-Client Init Part
+// 
 export const jsoncilentstate = reactive({
   host:"" ,
   path:"",
@@ -46,7 +51,7 @@ export const jsoncilentstate = reactive({
   period:0,
   
   SetToDefault(state = this){
-    SetProfile(jsonHostProfile,state)
+    SetProfile(jsonDefaultProfile,state)
   },
   SetToHost(state = this){
     SetProfile(jsonHostProfile,state)
@@ -56,9 +61,44 @@ export const jsoncilentstate = reactive({
 SetUnEnumerable(jsoncilentstate)
 jsoncilentstate.SetToDefault()
 
+
+
+//////////////////////////////////////////////////////////
+
+
+const streamDefaultProfile = {
+  host:"http://localhost" ,
+  port: 8002,
+  path:"/live/STREAM_NAME.flv",
+  delay:0.5
+}
+const streamHostProfile = {
+  host: 'http://' + window.location.hostname ,
+  port: 80,
+  path:"/live/STREAM_NAME.flv",
+  delay:0.5
+}
+
 export const streamstate = reactive({
-    host:"http://localhost" ,
-    path:"live/STREAM_NAME.flv",
-    port:"8080"
+    host:"" ,
+    path:"",
+    port: 0,
+    delay: 0 ,
+    SetToDefault(state = this){
+      SetProfile(streamDefaultProfile,state)
+    },
+    SetToHost(state = this){
+      SetProfile(streamHostProfile,state)
+    }
 })
 
+SetUnEnumerable(streamstate)
+streamstate.SetToDefault()
+
+
+//////////////////////////////////////////////////////////
+
+
+export const streamplaystate = reactive({
+  playing: false
+})

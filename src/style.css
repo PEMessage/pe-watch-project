@@ -5,7 +5,7 @@
 
 
 * {
-  @apply box-border text-sea-200
+  @apply box-border text-white
 }
 
 
@@ -35,4 +35,26 @@
 .g-row-full
 {
     @apply g-wh-full flex flex-row
+}
+
+
+.g-btn-group {
+  @apply bg-black flex flex-row  items-center justify-stretch;
+
+}
+.g-btn-group > .g-btn
+{
+  @apply flex-grow
+}
+.g-btn {
+    @apply  inline-block  
+            rounded-md py-1 px-2 m-1  
+            transition-all   bg-gray-700 
+            text-center 
+            cursor-pointer box-border
+}
+
+
+.g-btn:active {
+  @apply  scale-90  bg-opacity-60
 }
