@@ -1,7 +1,7 @@
 <template> <div class="g-wh-full">
     
     <div class="g-col-full">
-        <div class="video"> <PEVideoFLV ref="flvref"/>   </div>
+        <div class="video"> <VideoFLV ref="flvref"/>   </div>
 
         <!-- <div >
             <button class=" " @click="HandleCon"> Con</button>
@@ -12,7 +12,7 @@
 </div> </template>
 
 <script setup>
-import PEVideoFLV from './PEVideo/PEVideoFLV.vue';
+import VideoFLV from './VideoCompoent/VideoFLV.vue';
 import  {ref ,watch} from 'vue'
 
 import { streamplaystate } from '../store/store.js'
