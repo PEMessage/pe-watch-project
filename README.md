@@ -18,3 +18,4 @@ Perosnal learning project of javascript/html/css
 
 1. Using too many global state
 2. Not ideal at compoent divide
+3. No i18n, mobile support, responsive design support
