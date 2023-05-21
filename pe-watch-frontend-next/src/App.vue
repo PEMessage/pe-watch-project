@@ -9,7 +9,7 @@
     <div class="content g-box"> <MainContent />  </div>
   </main>
   <footer class="footer">
-    <img src="../public/logo.png" class="block w-4 h-4 mr-2"/>
+    <img src="../public/logo.png" class="block w-4 h-4 mr-2 my-1"/>
     <div class="text-sea-200">FZU 2023</div>
   </footer>
 </div>
