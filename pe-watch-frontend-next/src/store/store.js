@@ -51,7 +51,7 @@ export const jsoncilentstate = reactive({
   period:0,
   
   SetToDefault(state = this){
-    SetProfile(jsonDefaultProfile,state)
+    SetProfile(jsonHostProfile,state)
   },
   SetToHost(state = this){
     SetProfile(jsonHostProfile,state)
@@ -85,7 +85,7 @@ export const streamstate = reactive({
     port: 0,
     delay: 0 ,
     SetToDefault(state = this){
-      SetProfile(streamDefaultProfile,state)
+      SetProfile(streamHostProfile,state)
     },
     SetToHost(state = this){
       SetProfile(streamHostProfile,state)
