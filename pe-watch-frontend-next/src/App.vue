@@ -8,7 +8,10 @@
     <div class="sider g-box">  <Menu />    </div>
     <div class="content g-box"> <MainContent />  </div>
   </main>
-  <footer class="footer">FZU 2023</footer>
+  <footer class="footer">
+    <img src="../public/logo.png" class="block w-4 h-4 mr-2"/>
+    <div class="text-sea-200">FZU 2023</div>
+  </footer>
 </div>
 <JsonCilentModal />
 <StreamModal />
@@ -47,7 +50,8 @@ import StreamModal from './modals/StreamModal.vue';
 
 .footer
 {
-  @apply text-center text-sea-200 text-sm shrink-0
+  @apply   text-sm shrink-0 
+          flex flex-row justify-center items-center
 }
 
 
