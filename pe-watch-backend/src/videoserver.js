@@ -1,5 +1,5 @@
 // const  = require('worker_threads')
-import { parentPort } from 'worker_threads'
+
 import NodeMediaServer from 'node-media-server'
 
 const config = {

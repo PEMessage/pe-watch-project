@@ -1,11 +1,16 @@
 import express from 'express';
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { join } from 'path';
+import * as url from 'url';
+
+const __dirname = url.fileURLToPath(  (new URL('.', import.meta.url)).href )
+
 const app = express()
 const port = 80
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// })
 
 const jsonProxy = createProxyMiddleware({
     target: 'http://localhost:8003', // target host with the same base path
@@ -28,9 +33,9 @@ const videoProxy = createProxyMiddleware({
 
 app.use('/live',videoProxy)
   
-
+app.use( express.static( join(__dirname,'./dist') ) )
   
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(` app listening on port ${port}`)
 })
