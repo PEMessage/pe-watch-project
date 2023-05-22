@@ -18,9 +18,20 @@
     </div> 
     <div class="content">
       <div class="key">佩戴率:</div>
-      <div class="value">{{ (data.mask_sum / data.person_sum).toFixed(2) }} </div>
+      <div class="value">{{ mask_rate.toFixed(2) }} </div>
     </div>
-</main>
+    <!-- <div class="content">
+      <div class="key">安全率:</div>
+      <div class="value">{{ safe_rate.toFixed(2) }} </div>
+    </div> -->
+  </main>
+
+  <main class="main max-h-36 border-y-2 py-2 border-gray-500">
+
+    <div  class='risk' :class="{highrisk:isHighRisk}">
+      {{ isHighRisk ? "危险" : "安全" }}
+    </div>
+  </main>
     
 <!-- <div class="content">
   {{ loading ? "已连接" : "未连接" }}
@@ -29,7 +40,7 @@
 </div> </template>
 
 <script setup>
-import { ref , reactive} from 'vue'
+import { ref , reactive, computed, watchEffect} from 'vue'
 import {jsoncilentstate} from '../store/store.js'
 
 const current_state_map = reactive({"detection_mask": "有口罩",
@@ -46,11 +57,37 @@ const data = reactive({"detection_mask": 0,
                        "no_mask_sum":0,
                        "person_sum":0
 })
+const mask_rate = computed(() => {
+  return data.mask_sum/data.person_sum
+})
+
+const safe_rate = computed(() => {
+  if( isNaN(mask_rate.value) ){return NaN}
+  if ( mask_rate.value == 1 ){return 1}
+  if(data.person_sum < 35) {
+    return mask_rate.value * 0.85 - (data.person_sum/100) * 0.15
+  } else {
+    return mask_rate.value * 0.7 - (data.person_sum/100) * 0.3
+  }
+})
+
+const isHighRisk = computed(() => {
+  if(isNaN(mask_rate.value)) {return false}
+  if(mask_rate.value >= 0.55) {
+    return false
+  } else {
+    return true
+  }
+})
+
+
+
 const loading = ref(false)
 let host = "http://localhost"
 let path = '/api'
 let port = 8003
 let period = 250
+
 
 
 let fetchID = 0
@@ -106,12 +143,26 @@ defineExpose({StartFetch, StopFetch, log})
 </script>
 
 <style lang="postcss" scoped>
+.risk{
+  @apply  
+         rounded-md bg-green-500 mx-2
+         text-center py-1 text-black text-opacity-70 font-bold
+         transition-all duration-300
+}
+.risk.highrisk {
+  @apply bg-red-500
+}
+
+
+</style>
+
+<style lang="postcss" scoped>
 * {
   @apply text-white
 }
 
 .content{
-  @apply 
+  @apply  
          px-3 py-1 rounded-md bg-gray-800 m-2
          flex flex-row items-center justify-between
          transition-colors duration-75
@@ -126,7 +177,7 @@ defineExpose({StartFetch, StopFetch, log})
 }
 
 .main{
-  @apply  border-b-8 border-gray-800 flex flex-col py-2
+  @apply flex flex-col 
 }
 
 .title{

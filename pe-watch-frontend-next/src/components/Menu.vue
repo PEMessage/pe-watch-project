@@ -74,10 +74,10 @@
 <style scoped lang="postcss" >
 
   .footer {
-    @apply flex flex-row    border-t-8 border-gray-800
+    @apply flex flex-row     border-gray-800
   }
   .footer > div {
-    @apply basis-1/2 flex flex-col mx-1 py-1 
+    @apply basis-1/2 flex flex-col mx-1 mb-1
             
   }
   h1 {
@@ -85,7 +85,7 @@
   }
 
   .footer > * > .g-btn {
-    @apply  block  font-semibold my-1
+    @apply  block  font-semibold my-0.5
   }
 
   .footer > * > :nth-child(2){
@@ -116,7 +116,7 @@
 <!-- Header -->
 <style scoped lang="postcss" >
 .header{
-  @apply  rounded-t-sm bg-gray-800 py-3
+  @apply  rounded-t-sm bg-gray-800 py-2
          flex flex-row items-center justify-center
 }
 .dot{
