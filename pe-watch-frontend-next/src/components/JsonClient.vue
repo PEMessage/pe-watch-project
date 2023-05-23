@@ -122,9 +122,10 @@ const FetchHander = async () => {
     loading.value = true
   }
   
-  const StopFetch = () => {
+  const StopFetch = async () => {
     if(fetchID){
        clearInterval(fetchID)
+       fetchID = 0
     }
     setTimeout(ResetData,30)
   }

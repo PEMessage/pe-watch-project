@@ -16,7 +16,7 @@ class jsonServer:
     def __init__(self,port=8003,path="/api") -> None:
         self.port = port
         self.path = path
-        self.p_server = HTTPServer(('localhost', self.port), self.ReqHandler) 
+        self.p_server = HTTPServer(('0.0.0.0', self.port), self.ReqHandler) 
         #!!! p_server : HTTPServer mount to jsonServer.p_server
         self.p_server.data = {"valid": False}
     def __del__(self):
